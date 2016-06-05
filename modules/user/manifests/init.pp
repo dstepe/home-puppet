@@ -4,7 +4,7 @@ class user {
 		comment => 'Dirk Tepe',
 		home    => '/home/dstepe',
 		managehome => true
-	},
+	}
 	ssh_authorized_key { 'k_ssh':
 		user => 'dstepe',
 		type => 'rsa',
