@@ -10,4 +10,10 @@ node "marvin.tf5net.local" {
 			'Port'                   => [22, 2222],
 		}
 	}
+
+	class { 'sudo': }
+	sudo::conf { 'dstepe':
+		priority => 10,
+		content  => "%wheel ALL=(ALL) NOPASSWD: ALL",
+	}
 }

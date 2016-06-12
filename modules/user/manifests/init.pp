@@ -3,7 +3,8 @@ class user {
 		ensure  => present,
 		comment => 'Dirk Tepe',
 		home    => '/home/dstepe',
-		managehome => true
+		managehome => true,
+		groups  => ['wheel'],
 	}
 	ssh_authorized_key { 'dstepe_ssh':
 		user => 'dstepe',
