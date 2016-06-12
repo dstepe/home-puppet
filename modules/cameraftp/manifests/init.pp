@@ -1,4 +1,11 @@
 class cameraftp {
+	file { '/var/cameras':
+		ensure => 'directory',
+		owner => 'root',
+		group => 'cameras',
+		mode  => '775',
+	}
+
 	group { 'cameras':
 		ensure => 'present',
 	}
@@ -6,7 +13,7 @@ class cameraftp {
 	user { 'camera1':
 		ensure => 'present',
 		comment => 'Camera 1',
-		home => '/home/camera1',
+		home => '/var/cameras/camera1',
 		managehome => true,
 		password => '$1$wtZfSWpg$NvW7jd12QuFMku4KBWQFe.',
 		groups => ['cameras'],
@@ -14,7 +21,7 @@ class cameraftp {
         user { 'camera2':
                 ensure => 'present',
                 comment => 'Camera 2',
-                home => '/home/camera2',
+                home => '/var/cameras/camera2',
                 managehome => true,
 		password => '$1$wtZfSWpg$NvW7jd12QuFMku4KBWQFe.',
                 groups => ['cameras'],
