@@ -1,4 +1,8 @@
-node "marvin.tf5net.local" {
+node "stark.tf5net.local" {
+
+	package { 'epel-release':
+		ensure => 'installed',
+	}
 
 	include user
 
@@ -25,5 +29,15 @@ node "marvin.tf5net.local" {
 		ftpd_banner       => 'TF5Net FTP Server',
 		local_enable      => true,
 		#chroot_local_user => 'YES',
+	}
+
+	class { 'openvpn':  }
+	openvpn::server { 'tf5net':
+		country      => 'US',
+		province     => 'OH',
+		city         => 'Hamilton',
+		organization => 'tf5net.local',
+		email        => 'dstepe@gmail.com',
+		server       => '10.200.200.0 255.255.255.0',
 	}
 }

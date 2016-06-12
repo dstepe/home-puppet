@@ -1,0 +1,122 @@
+<% unless @remote -%>
+mode server
+client-config-dir /etc/openvpn/<%= @name %>/client-configs
+<% else -%>
+client
+ns-cert-type server
+<% @remote.to_a.each do |rem| -%>
+remote <%= rem %>
+<% end -%>
+<% if @server_poll_timeout -%>
+server-poll-timeout <%= @server_poll_timeout %>
+<% end -%>
+<% end -%>
+ca /etc/openvpn/<%= @name %>/keys/ca.crt
+cert /etc/openvpn/<%= @name %>/keys/<%= @common_name %>.crt
+key /etc/openvpn/<%= @name %>/keys/<%= @common_name %>.key
+<% unless @remote -%>
+dh /etc/openvpn/<%= @name %>/keys/dh<%= @ssl_key_size %>.pem
+<% end -%>
+<% unless @remote -%>
+crl-verify /etc/openvpn/<%= @name %>/crl.pem
+<% end -%>
+<% if @proto == 'tcp' -%>
+proto <%= @proto %>-server
+<% else -%>
+proto <%= @proto %>
+<% end -%>
+port <%= @port %>
+<% if @tls_server -%>
+tls-server
+<% end -%>
+<% if @compression != '' -%>
+<%= @compression %>
+<% end -%>
+group <%= @group_to_set %>
+user <%= @user %>
+<% if @logfile -%>
+log-append <%= @logfile %>
+<% end -%>
+status <%= @status_log %>
+<% if @status_version != '' -%>
+status-version <%= @status_version %>
+<% end -%>
+dev <%= @dev %>
+<% if @local != '' -%>
+local <%= @local %>
+<% end -%>
+<% if @ipp -%>
+ifconfig-pool-persist <%= @name %>/vpn-ipp.txt
+<% end -%>
+<% if @server != '' -%>
+server <%= @server %>
+<% end -%>
+<% if @server_ipv6 != '' -%>
+server-ipv6 <%= @server_ipv6 %>
+<% end -%>
+<% if @server_bridge != '' -%>
+server-bridge <%= @server_bridge %>
+<% end -%>
+<% @push.each do |item| -%>
+push "<%= item %>"
+<% end -%>
+<% @route.each do |item| -%>
+route <%= item %>
+<% end -%>
+<% if @keepalive != '' -%>
+keepalive <%= @keepalive %>
+<% end -%>
+<% if @topology != '' -%>
+topology <%= @topology %>
+<% end -%>
+<% if @verb != '' -%>
+verb <%= @verb %>
+<% end -%>
+<% if @cipher != '' -%>
+cipher <%= @cipher %>
+<% end -%>
+<% if @c2c -%>
+client-to-client
+<% end -%>
+<% if @persist_key -%>
+persist-key
+<% end -%>
+<% if @persist_tun -%>
+persist-tun
+<% end -%>
+<% if @tcp_nodelay -%>
+tcp-nodelay
+<% end -%>
+<% if @ccd_exclusive -%>
+ccd-exclusive
+<% end -%>
+<% if @pam -%>
+plugin /usr/lib/openvpn/openvpn-auth-pam.so login
+<% end -%>
+<% if @management -%>
+management <%= @management_ip %> <%= @management_port %>
+<% end -%>
+<% if @up != '' or @down != ''-%>
+script-security 2
+<% end -%>
+<% if @up != '' -%>
+up "<%= @up %>"
+<% end -%>
+<% if @down != '' -%>
+down "<%= @down %>"
+<% end -%>
+<% if @username_as_common_name -%>
+username-as-common-name
+<% end -%>
+<% if @ldap_enabled == true -%>
+plugin <%= scope.lookupvar('::openvpn::params::ldap_auth_plugin_location') %> "/etc/openvpn/<%= name %>/auth/ldap.conf"
+<% end -%>
+<% if @client_cert_not_required -%>
+client-cert-not-required
+<% end -%>
+<% if @duplicate_cn -%>
+duplicate-cn
+<% end -%>
+<% if @ping_timer_rem -%>
+ping-timer-rem
+<% end -%>
