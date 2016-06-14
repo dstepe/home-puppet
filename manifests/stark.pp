@@ -8,6 +8,12 @@ node "stark.tf5net.local" {
 
 	include cameraftp
 
+	class { 'timezone':
+		timezone => 'America/New_York',
+	}
+
+	include '::ntp'
+
 	class { 'ssh::server':
 		storeconfigs_enabled => false,
 		options => {
