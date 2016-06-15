@@ -19,6 +19,6 @@ class user {
 	ssh_authorized_key { 'dstepe_mercury_ssh':
 		user => 'dstepe',
 		type => 'rsa',
-		key => '',
+		key => 'AAAAB3NzaC1yc2EAAAADAQABAAACAQCrSCIVx0TKIU3EjJulAMPjaBaITTdwDKgvbasiChOwS4qUwGWgFvM4nQLxC3cec+hMIH7ZEPsoNz+Kr+2EjLV9huMf1HfhwJknOEVHVd+0S+xsKmFeh84CtDtMIZqlRLbFmdf6F4c8augSQ75vvivJ00ae+2oPzkwj2Eny5vZu4ZsODb0nTJTkoet2ZqFo+4GBABek/s4CELW9/5xX127wj4FtINIRA/ySKIB+GD1rddYa1kXFn9ltsDZGoiLpQSnLrnmzm85MJDUx8IiLYtJW6UKe3fl1l86KGGhq3e8rRj5iV5UhJ8elHZquHHTaUzMrdKCiDY9RQygOY8StexG0DJI8wCZWZi4eplXkCr42j8j5n4VWgGQm3VFGfPRkZ8gZYRO4Ind9a4oxQ8y094tA5Lr6MlmZnHiXluVc8eMuOhUZ01FflDz8Ls1l5uG4BLMeV9OmtkE492A5PM72oo7t5KlmxpYw+LiUonQye0PyvEBJD9l71bFjgcBBcLqdDcwRcq622phP2j3B7CjCKOuYqK2bNP6/6AprInZoPveQDbY8Cttyt6F/nHCZz1gvXpxAuu25SAaZ0jjFcvyheJZ8Jr+vbE18HEGE/T00oMgdG/Cm1tgkeW1CPfgdncZvbssXPev+sPGIupUuleCkel9nb2AyqNlu1R9mubC9pGSUNw==',
 	}
 }
