@@ -16,4 +16,9 @@ class user {
 		type => 'rsa',
 		key => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDvYyN3vgUexJ11+RTfqxI7M3l5wtE2LWng8NW+M6lDjC1S/rtRN5ySsIg9j74sW1ZS5W1I3VgSfertNJLyqSLjYjVCG9lt7lsimXkHMCmTCjMZTZReDLBegSO3c5stJXKqGyNdMUD3aXdO+1ydMuIM+i2tN7Z11ShWi+b23PHEuZ+bY3f4Hm2cTnvV/iSKZ1gCmgWl+kg5F98we0BccuxApNR5wvXeJ/kvFsrbl/mI2bOSgQQ/XHY/7Fockked0O7sCMAY+Z8KM+wtqxZgXPQBH5/w9IwxSs5i7S0lIP0jT6A0SsgI49Mdr9ABDrA+UykVzJ3eXsqssvzG+lE6vCMR',
 	}
+	ssh_authorized_key { 'dstepe_mercury_ssh':
+		user => 'dstepe',
+		type => 'rsa',
+		key => '',
+	}
 }
