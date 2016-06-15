@@ -14,6 +14,10 @@ node "stark.tf5net.local" {
 
 	include '::ntp'
 
+	class { 'selinux':
+		mode => 'permissive',
+	}
+
 	class { 'ssh::server':
 		storeconfigs_enabled => false,
 		options => {

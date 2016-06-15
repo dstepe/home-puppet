@@ -26,4 +26,11 @@ class cameraftp {
 		password => '$1$wtZfSWpg$NvW7jd12QuFMku4KBWQFe.',
                 groups => ['cameras'],
         }
+
+	file { '/usr/local/bin/moveSnaps.sh':
+		mode => '0755',
+		owner => 'root',
+		group => 'root',
+		source => 'puppet:///modules/cameraftp/moveSnaps.sh',
+	}
 }
