@@ -41,13 +41,13 @@ node "stark.tf5net.local" {
 		#chroot_local_user => 'YES',
 	}
 
-	class { 'openvpn':  }
-	openvpn::server { 'tf5net':
-		country      => 'US',
-		province     => 'OH',
-		city         => 'Hamilton',
-		organization => 'tf5net.local',
-		email        => 'dstepe@gmail.com',
-		server       => '10.200.200.0 255.255.255.0',
-	}
+#	class { 'openvpn':  }
+#	openvpn::server { 'tf5net':
+#		country      => 'US',
+#		province     => 'OH',
+#		city         => 'Hamilton',
+#		organization => 'tf5net.local',
+#		email        => 'dstepe@gmail.com',
+#		server       => '10.200.200.0 255.255.255.0',
+#	}
 }

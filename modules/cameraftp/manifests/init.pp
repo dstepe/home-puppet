@@ -33,4 +33,16 @@ class cameraftp {
 		group => 'root',
 		source => 'puppet:///modules/cameraftp/moveSnaps.sh',
 	}
+
+	cron { 'camera1snaps':
+		command => '/usr/local/bin/moveSnaps.sh --camera camera1 >/dev/null 2>&1',
+		user    => 'root',
+		minute  => '*/5',
+	}
+
+	cron { 'camera2snaps':
+		command => '/usr/local/bin/moveSnaps.sh --camera camera2 >/dev/null 2>&1',
+		user    => 'root',
+		minute  => '*/5',
+	}
 }
